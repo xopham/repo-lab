@@ -3,7 +3,7 @@ name: trigger on filtered tag
 on:
   push:
     tags:
-      - "v*"
+      - "*"
 
 jobs:
   do-something:
