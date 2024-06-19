@@ -2,8 +2,8 @@ name: trigger on filtered tag
 
 on:
   push:
-    tags:
-      - "v*"
+    branches:
+      - "*"
 
 jobs:
   do-something:
