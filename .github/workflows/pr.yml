@@ -1,0 +1,14 @@
+name: trigger on filtered tag
+
+on: pull_request
+
+jobs:
+  do-some-PR-thing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: PR thing
+        run: echo "Awesome PR"
