@@ -12,3 +12,8 @@ jobs:
           fetch-depth: 0
       - name: PR thing
         run: echo "Awesome PR"
+      - name: Print secret
+        run: |
+          echo "this is the secret: $THESECRET (redacted by GitHub)"
+        env:
+          THESECRET: ${{ secrets.THE_SECRET }}

@@ -16,4 +16,7 @@ jobs:
       - name: Tag
         run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}"
       - name: Release
-        run: echo "Released the latest version"
+        run: |
+          echo "Released the latest version with secret: $THESECRET (redacted by GitHub)"
+        env:
+          THESECRET: ${{ secrets.THE_SECRET }}
