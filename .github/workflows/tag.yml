@@ -1,0 +1,19 @@
+name: trigger on filtered tag
+
+on:
+  push:
+    tags:
+      - "v*"
+
+jobs:
+  do-something:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Tag
+        run: echo "RELEASE_VERSION=${GITHUB_REF#refs/*/}"
+      - name: Release
+        run: echo "Released the latest version"
