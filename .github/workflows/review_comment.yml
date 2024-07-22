@@ -23,6 +23,13 @@ jobs:
       - name: Print content
         run: |
           cat foo
+      - name: (PR review) Checkout review SHA directly
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.event.review.commit_id }}
+      - name: Print content from commit_id
+        run: |
+          cat foo
       - name: Dump GitHub context
         env:
           GITHUB_CONTEXT: ${{ toJson(github) }}
