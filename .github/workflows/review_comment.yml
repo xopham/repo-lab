@@ -12,14 +12,14 @@ jobs:
         run: |
           echo "Review comment: ${{ github.event.review.body }}"
           echo "Reviewed commit: ${{ github.event.review.commit_id }}"
-          echo "sha=${{ github.event.review.commit_id }}\n" >> $GITHUB_OUTPUT
+          echo "sha=${{ github.event.review.commit_id }}" >> $GITHUB_OUTPUT
       - name: Target commit
         run: |
           echo ${{ steps.cid.outputs.sha }}
       - name: (PR review) Checkout review SHA
         uses: actions/checkout@v3
         with:
-          ref: 39d942e11453a6f801950857e93a75ebb1c9fa09
+          ref: ${{ steps.cid.outputs.sha }}
       - name: Print content
         run: |
           cat foo
