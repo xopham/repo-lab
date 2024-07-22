@@ -16,13 +16,13 @@ jobs:
       - name: Target commit
         run: |
           echo ${{ steps.cid.outputs.sha }}
-      - name: (PR review) Checkout review SHA
-        uses: actions/checkout@v3
-        with:
-          ref: ${{ steps.cid.outputs.sha }}
-      - name: Print content
-        run: |
-          cat foo
+      #      - name: (PR review) Checkout review SHA
+      #        uses: actions/checkout@v3
+      #        with:
+      #          ref: ${{ steps.cid.outputs.sha }}
+      #      - name: Print content
+      #        run: |
+      #          cat foo
       - name: (PR review) Checkout review SHA directly
         uses: actions/checkout@v3
         with:
