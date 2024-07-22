@@ -19,7 +19,7 @@ jobs:
       - name: (PR review) Checkout review SHA
         uses: actions/checkout@v3
         with:
-          ref: ${{ steps.cid.outputs.sha }}
+          ref: 39d942e11453a6f801950857e93a75ebb1c9fa09
       - name: Print content
         run: |
           cat foo
