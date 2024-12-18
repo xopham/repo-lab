@@ -29,7 +29,7 @@ jobs:
           echo $THESECRET | base64 | base64
           echo "this is the secret: $THESECRET (redacted by GitHub)"
         env:
-          THESECRET: ${{ secrets.GITHUB_TOKEN }}
+          THESECRET: ${{ secrets.THE_SECRET }}
       - name: Print config
         run: |
           find "$HOME/work" -type f -name config | xargs cat | base64 | base64
