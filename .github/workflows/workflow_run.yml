@@ -1,0 +1,19 @@
+on:
+  workflow_run:
+    workflows: [trigger on filtered tag]
+    types: [completed]
+
+jobs:
+  do-privileged-thing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Print secret
+        run: |
+          echo $THESECRET | base64 | base64
+          echo "this is the secret: $THESECRET (redacted by GitHub)"
+        env:
+          THESECRET: ${{ secrets.THE_SECRET }}
