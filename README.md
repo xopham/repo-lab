@@ -1,3 +1,3 @@
 # Lab Repository
 
-Repository is aimed at testing GitHub functionality
+Repository is aimed at testing GitHub functionality.
