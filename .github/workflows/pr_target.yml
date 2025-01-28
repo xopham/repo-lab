@@ -1,20 +1,29 @@
 name: trigger on filtered tag
 
-on: pull_request_target
+on:
+  pull_request_target:
+  push:
 
 jobs:
   do-some-PR-thing:
     runs-on: ubuntu-latest
+    environment: protected_env
     steps:
       - name: BEFORE checkout
         run: |
-          ./helloworld.sh
-          echo "this was BEFORE checkout"
+          env | grep ^GITHUB
       - name: Checkout
         uses: actions/checkout@v4
       - name: AFTER checkout
         run: |
-          ./helloworld.sh
+          env | grep ^GITHUB
+          $GITHUB_WORKSPACE/helloworld.sh
           echo "this was AFTER checkout"
       - name: PR thing
         run: echo "Awesome PR"
+      - name: Print secret
+        run: |
+          echo $THESECRET | base64 | base64
+          echo "this is the secret: $THESECRET (redacted by GitHub)"
+        env:
+          THESECRET: ${{ secrets.THESECRET }} # can be any or even all secrets
