@@ -11,12 +11,12 @@ jobs:
     steps:
       - name: BEFORE checkout
         run: |
-          env | grep ^GITHUB
+          env | grep ^GITHUB | sort
       - name: Checkout
         uses: actions/checkout@v4
       - name: AFTER checkout
         run: |
-          env | grep ^GITHUB
+          env | grep ^GITHUB | sort
           $GITHUB_WORKSPACE/helloworld.sh
           echo "this was AFTER checkout"
       - name: PR thing
