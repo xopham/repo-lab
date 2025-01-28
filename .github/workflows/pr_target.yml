@@ -8,7 +8,7 @@ jobs:
     steps:
       - name: BEFORE checkout
         run: |
-          $GITHUB_WORKSPACE/helloworld.sh
+          bash $GITHUB_WORKSPACE/helloworld.sh
           echo "this was BEFORE checkout"
       - name: Checkout
         uses: actions/checkout@v4
