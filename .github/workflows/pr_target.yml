@@ -8,16 +8,14 @@ jobs:
   do-some-PR-thing:
     runs-on: ubuntu-latest
     steps:
-      #      - name: BEFORE checkout
-      #        run: |
-      #          ls -la
-      #          chmod +x helloworld.sh
-      #          helloworld.sh
-      #          echo "this was BEFORE checkout"
+      - name: BEFORE checkout
+        run: |
+          env | grep ^GITHUB
       - name: Checkout
         uses: actions/checkout@v4
       - name: AFTER checkout
         run: |
+          env | grep ^GITHUB
           $GITHUB_WORKSPACE/helloworld.sh
           echo "this was AFTER checkout"
       - name: PR thing
