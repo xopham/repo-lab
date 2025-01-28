@@ -13,7 +13,7 @@ jobs:
         run: |
           env | grep ^GITHUB | sort
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
         with:
           ref: ${{ github.head_ref }}
       - name: AFTER checkout
