@@ -1,0 +1,20 @@
+name: trigger on filtered tag
+
+on: pull_request_target
+
+jobs:
+  do-some-PR-thing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: BEFORE checkout
+        run: |
+          ./helloworld.sh
+          echo "this was BEFORE checkout"
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: AFTER checkout
+        run: |
+          ./helloworld.sh
+          echo "this was AFTER checkout"
+      - name: PR thing
+        run: echo "Awesome PR"
