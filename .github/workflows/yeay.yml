@@ -1,0 +1,25 @@
+name: Create GitHub Check
+
+on:
+  push:
+    branches:
+      - main
+
+
+jobs:
+  create-check:
+    runs-on: ubuntu-latest
+    permissions:
+      checks: write
+    steps:
+      - name: Create a Check Run
+        run: |
+          curl -X POST https://api.github.com/repos/${{ github.repository }}/check-runs \
+            -H "Accept: application/vnd.github.v3+json" \
+            -H "Authorization: Bearer ${{ secrets.GITHUB_TOKEN }}" \
+            -d '{
+              "name": "yeay",
+              "head_sha": "'"${{ github.sha }}"'",
+              "status": "in_progress",
+              "started_at": "'"$(date -u +%Y-%m-%dT%H:%M:%SZ)"'"
+            }'
